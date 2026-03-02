@@ -193,6 +193,7 @@ ul { list-style: none; }
 .badge-public  { background: rgba(15,18,38,.08); color: var(--ink);  border: 1px solid var(--border); }
 .badge-info    { background: rgba(255,255,255,.12); color: rgba(255,255,255,.85); border: 1px solid rgba(255,255,255,.2); }
 .badge-note    { background: var(--orange-lt); color: var(--orange-dk); border: 1px solid rgba(233,84,40,.25); }
+.badge-cc      { background: #e6f4f1; color: #1a7a6e; border: 1px solid rgba(26,122,110,.2); }
 
 /* Badges inside card body (not hero) */
 .school-card .badge-info {
@@ -420,6 +421,15 @@ ul { list-style: none; }
   padding: .55rem .85rem;
   font-size: .8rem;
   color: var(--orange-dk);
+}
+
+.card-transfer-note {
+  background: #e6f4f1;
+  border: 1px solid rgba(26,122,110,.2);
+  border-radius: var(--radius-sm);
+  padding: .55rem .85rem;
+  font-size: .8rem;
+  color: #1a7a6e;
 }
 
 .card-footer {

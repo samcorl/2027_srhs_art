@@ -15,12 +15,14 @@
 
   function typeLabel(type) {
     switch (type) {
-      case 'private-ca': return { text: 'CA Private',  cls: 'badge-private' };
-      case 'uc':         return { text: 'UC System',   cls: 'badge-uc'      };
-      case 'csu':        return { text: 'CSU System',  cls: 'badge-csu'     };
-      case 'private':    return { text: 'Private',     cls: 'badge-private' };
-      case 'public-oos': return { text: 'Public OOS',  cls: 'badge-public'  };
-      default:           return { text: type,          cls: 'badge-info'    };
+      case 'private-ca': return { text: 'CA Private',     cls: 'badge-private' };
+      case 'uc':         return { text: 'UC System',      cls: 'badge-uc'      };
+      case 'csu':        return { text: 'CSU System',     cls: 'badge-csu'     };
+      case 'private':    return { text: 'Private',        cls: 'badge-private' };
+      case 'public-oos': return { text: 'Public OOS',     cls: 'badge-public'  };
+      case 'cc-ca':      return { text: 'CA Community',   cls: 'badge-cc'      };
+      case 'cc-oos':     return { text: 'CC Transfer',    cls: 'badge-cc'      };
+      default:           return { text: type,             cls: 'badge-info'    };
     }
   }
 
@@ -40,6 +42,20 @@
         primary: `$${school.tuition.toLocaleString()}/yr in-state`,
         note: `$${school.tuitionOOS ? school.tuitionOOS.toLocaleString() : '—'}/yr out-of-state`,
         highlight: true,
+      };
+    }
+    if (school.type === 'cc-ca') {
+      return {
+        primary: `$${school.tuition.toLocaleString()}/yr tuition`,
+        note: 'CA College Promise Grant may reduce to $0',
+        highlight: true,
+      };
+    }
+    if (school.type === 'cc-oos') {
+      return {
+        primary: `$${school.tuition.toLocaleString()}/yr out-of-state`,
+        note: `~$${school.totalCOA.toLocaleString()} total COA`,
+        highlight: false,
       };
     }
     return {
@@ -64,8 +80,14 @@
       .map(h => `<li>${h}</li>`)
       .join('');
 
+    const isCcSchool = school.type === 'cc-ca' || school.type === 'cc-oos';
+
     const mangaHtml = school.manga
       ? `<div class="card-manga-note">🎌 ${school.mangaNote}</div>`
+      : '';
+
+    const transferHtml = school.transferPath
+      ? `<div class="card-transfer-note">🎓 ${school.transferNote}</div>`
       : '';
 
     const rankHtml = rank
@@ -92,6 +114,7 @@
   <div class="card-badges">
     <span class="badge ${typeLbl.cls}">${typeLbl.text}</span>
     ${isCA ? '<span class="badge badge-ca">CA In-State</span>' : ''}
+    ${isCcSchool ? '<span class="badge badge-cc">2-Year / Transfer Path</span>' : ''}
     ${school.manga ? '<span class="badge badge-manga">Manga / Sequential Art</span>' : ''}
     ${school.testOptional ? '<span class="badge badge-info">Test Optional</span>' : ''}
   </div>
@@ -121,10 +144,13 @@
   </div>
 
   <div class="card-aid-note">
-    Sticker price is rarely what you pay. <a href="prep-guide.html#financial-aid">Financial Aid Primer →</a>
+    ${isCcSchool
+      ? `${school.type === 'cc-ca' ? 'CA College Promise Grant may reduce tuition to $0 for qualifying students.' : 'Financial aid and grants available — contact the financial aid office.'} <a href="prep-guide.html#two-year-path">2-Year Pathway Guide →</a>`
+      : `Sticker price is rarely what you pay. <a href="prep-guide.html#financial-aid">Financial Aid Primer →</a>`}
   </div>
 
   ${mangaHtml}
+  ${transferHtml}
 
   <div class="card-highlights">
     <ul>${highlightHtml}</ul>
@@ -147,22 +173,33 @@
 
   // ── Filter & Sort ──────────────────────────────────────────────────────────
 
+  function isCcType(s) {
+    return s.type === 'cc-ca' || s.type === 'cc-oos';
+  }
+
   function getFilteredSchools(schools, category) {
     let filtered = schools.filter(s => s.categories.includes(category));
 
-    switch (activeFilter) {
-      case 'ca':
-        filtered = filtered.filter(s => s.state === 'CA');
-        break;
-      case 'manga':
-        filtered = filtered.filter(s => s.manga);
-        break;
-      case 'under50k':
-        filtered = filtered.filter(s => s.tuition < 50000);
-        break;
-      case 'portfolio':
-        filtered = filtered.filter(s => s.portfolioRequired);
-        break;
+    if (activeFilter === 'cc') {
+      // Show only 2-year / community college schools
+      filtered = filtered.filter(isCcType);
+    } else {
+      // All other filters exclude CC schools
+      filtered = filtered.filter(s => !isCcType(s));
+      switch (activeFilter) {
+        case 'ca':
+          filtered = filtered.filter(s => s.state === 'CA');
+          break;
+        case 'manga':
+          filtered = filtered.filter(s => s.manga);
+          break;
+        case 'under50k':
+          filtered = filtered.filter(s => s.tuition < 50000);
+          break;
+        case 'portfolio':
+          filtered = filtered.filter(s => s.portfolioRequired);
+          break;
+      }
     }
 
     return sortSchools(filtered, category);
