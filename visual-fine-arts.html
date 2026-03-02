@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Fine Arts Schools — SRHS ArtQuest Class of 2027</title>
+  <meta name="description" content="Top visual fine arts colleges for SRHS ArtQuest students. Painting, sculpture, ceramics, photography, sequential art/manga. CA student cost perspective.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#e95428">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="site-logo"><span>SRHS ArtQuest</span> · Class of 2027</div>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="digital-arts.html">Digital Arts</a>
+      <a href="visual-fine-arts.html" class="active">Visual Fine Arts</a>
+      <a href="prep-guide.html">Prep Guide</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Visual Fine Arts Schools</h1>
+  <p class="subtitle">
+    Painting · Sculpture · Drawing · Printmaking · Ceramics · Photography · Fibers · Sequential Art
+    <br>Costs shown from a California student's perspective.
+  </p>
+  <hr class="hero-rule">
+  <div class="hero-badges">
+    <span class="badge badge-info">CA In-State Highlighted</span>
+    <span class="badge badge-info">Manga / Sequential Art Noted</span>
+    <span class="badge badge-info">2025–2026 Costs</span>
+  </div>
+</section>
+
+<main class="page-wrap">
+
+  <div class="cost-banner">
+    <strong>CA Student Advantage:</strong>
+    UCLA's BA in Art costs ~$13,804/yr in-state (vs. $44,854 OOS).
+    UC Davis costs ~$14,312/yr in-state. CSU Long Beach is ~$7,066/yr.
+    These are serious fine arts programs at a fraction of elite private school costs.
+    Private CA schools like CCA, CalArts, and Otis charge the same for all students.
+  </div>
+
+  <div class="controls">
+    <div class="filter-group">
+      <button class="filter-btn active" data-filter="all">All Schools</button>
+      <button class="filter-btn" data-filter="ca">CA Schools Only</button>
+      <button class="filter-btn" data-filter="manga">🎌 Manga Programs</button>
+      <button class="filter-btn" data-filter="under50k">Under $50K Tuition</button>
+    </div>
+    <select id="sort-select" class="sort-select">
+      <option value="rank">Sort: By Rank</option>
+      <option value="cost">Sort: Lowest Cost First</option>
+      <option value="name">Sort: A–Z</option>
+      <option value="accept">Sort: Most Selective First</option>
+    </select>
+    <span id="results-count" class="results-count"></span>
+  </div>
+
+  <div id="schools-grid" class="schools-grid" data-category="visual_fine_arts">
+    <!-- Rendered by main.js -->
+    <p class="text-muted" style="grid-column:1/-1;padding:2rem 0;text-align:center">Loading schools…</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="page-intro">
+    <h3 style="margin-bottom:.5rem">📝 Portfolio Tips for Visual Fine Arts Applications</h3>
+    <p>
+      Fine arts portfolio reviews value <strong>artistic voice and depth</strong> over technical perfection.
+      Admissions readers want to see who you are as an artist — your curiosity, your process, your range.
+      ArtQuest work is real portfolio material: curate your best pieces and document your sketchbooks.
+    </p>
+    <ul style="list-style:disc;padding-left:1.5rem;font-size:.9rem;color:var(--ink-light);margin-top:.5rem">
+      <li><strong>Typical portfolio:</strong> 10–20 original works; mix of media encouraged at most schools.</li>
+      <li><strong>RISD:</strong> Requires a drawing test (geometric object + shoe) alongside your portfolio.</li>
+      <li><strong>Cooper Union:</strong> Home test required; extremely selective — include at admissions audit.</li>
+      <li><strong>Yale:</strong> Accepts BA applicants via Common App arts supplement; extraordinary selectivity.</li>
+      <li><strong>Manga/Sequential Art:</strong> SCAD, SVA, MICA, and KCAI — include narrative sequential work in your portfolio.</li>
+      <li><strong>ArtQuest students:</strong> Your studio hours and teacher letter of rec from the program carry real weight.</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  Built for SRHS ArtQuest — Class of 2027 | srhs.art | All costs approximate 2025–2026 — verify with each school
+</footer>
+
+<script src="data/schools.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

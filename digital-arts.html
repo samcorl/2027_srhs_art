@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Arts Schools — SRHS ArtQuest Class of 2027</title>
+  <meta name="description" content="Top digital arts colleges for SRHS ArtQuest students. Animation, game design, motion media, interactive design. CA student cost perspective.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#e95428">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="site-logo"><span>SRHS ArtQuest</span> · Class of 2027</div>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="digital-arts.html" class="active">Digital Arts</a>
+      <a href="visual-fine-arts.html">Visual Fine Arts</a>
+      <a href="prep-guide.html">Prep Guide</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Digital Arts Schools</h1>
+  <p class="subtitle">
+    Animation · Game Design · Motion Media · Interactive Design · Computer Art · VFX · UX
+    <br>Costs shown from a California student's perspective.
+  </p>
+  <hr class="hero-rule">
+  <div class="hero-badges">
+    <span class="badge badge-info">CA In-State Highlighted</span>
+    <span class="badge badge-info">Manga Programs Noted</span>
+    <span class="badge badge-info">2025–2026 Costs</span>
+  </div>
+</section>
+
+<main class="page-wrap">
+
+  <div class="cost-banner">
+    <strong>CA Student Advantage:</strong>
+    UC schools (UCLA, UCSD) cost ~$14K/yr in-state vs. ~$44K OOS — a $30K+/yr savings.
+    CSU schools (CSULB, SJSU) cost ~$7–8K/yr in-state vs. $19K OOS.
+    Private CA schools (CalArts, Art Center, CCA) charge the same for all students.
+  </div>
+
+  <div class="controls">
+    <div class="filter-group">
+      <button class="filter-btn active" data-filter="all">All Schools</button>
+      <button class="filter-btn" data-filter="ca">CA Schools Only</button>
+      <button class="filter-btn" data-filter="under50k">Under $50K Tuition</button>
+      <button class="filter-btn" data-filter="manga">Manga Programs</button>
+    </div>
+    <select id="sort-select" class="sort-select">
+      <option value="rank">Sort: By Rank</option>
+      <option value="cost">Sort: Lowest Cost First</option>
+      <option value="name">Sort: A–Z</option>
+      <option value="accept">Sort: Most Selective First</option>
+    </select>
+    <span id="results-count" class="results-count"></span>
+  </div>
+
+  <div id="schools-grid" class="schools-grid" data-category="digital_arts">
+    <!-- Rendered by main.js -->
+    <p class="text-muted" style="grid-column:1/-1;padding:2rem 0;text-align:center">Loading schools…</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="page-intro">
+    <h3 style="margin-bottom:.5rem">📝 Portfolio Tips for Digital Arts Applications</h3>
+    <p>
+      Most digital arts programs want to see <strong>range and process</strong>, not just finished pieces.
+      Include sketchbooks, concept development, and work-in-progress materials alongside finished pieces.
+      For animation programs, life drawing skills are often more important than digital work — demonstrating you can draw from observation is a strong signal.
+    </p>
+    <ul style="list-style:disc;padding-left:1.5rem;font-size:.9rem;color:var(--ink-light);margin-top:.5rem">
+      <li>CalArts: Each program has unique requirements — research thoroughly. Character Animation wants strong drawings.</li>
+      <li>Art Center: Conceptual thinking matters as much as technical skill.</li>
+      <li>SCAD: Portfolio + letter of intent; sequential art applicants should include narrative work.</li>
+      <li>CMU: Interdisciplinary thinking and written component valued alongside portfolio.</li>
+      <li>RISD: Includes a drawing test as part of the admissions process.</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  Built for SRHS ArtQuest — Class of 2027 | srhs.art | All costs approximate 2025–2026 — verify with each school
+</footer>
+
+<script src="data/schools.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
